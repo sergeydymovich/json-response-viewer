@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="devtools.css" />
+    <script src="devtools.js"></script>
+    <script src="./scripts/create-req-element.js"></script>
+    <script src="./scripts/clear-req-list.js"></script>
+    <script src="./scripts/obj-parser.js"></script>
+    <script src="./scripts/search.js"></script>
+    <script src="./scripts/filter-requests.js"></script>
+    <script src="./scripts/expand-requests.js"></script>
+    <script src="./scripts/keyboard.js"></script>
+    <script src="./scripts/reload-listener.js"></script>
+    <script src="./scripts/debounce.js"></script>
+    <script src="./scripts/response-parser.js"></script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="panel">
+        <div class="left-column">
+          <button class="clear-list-button" id="clear-list-button">
+            <img class="clear-icon" src="./icons/circle-crossed.png"></img>
+          </button>  
+          <label class="filter-label">
+            <input class="filter-input" id="filter-input" type="text" placeholder="filter"></input>
+          </label>
+          <label class="preserve-label">
+            <input type="checkbox" id="preserve-checkbox"></input>
+            <p class="show-text">PRESERVE LOG</p>
+          </label>
+        </div>
+        <div class="right-column">
+          <label class="show-objects-label">
+            <input type="checkbox" id="expand-checkbox"></input>
+            <p class="show-text">EXPAND</p> 
+          </label>
+          <div class="search-container">
+            <label class="search-label">
+              <input class="search-input" id="search" type="text" placeholder="search"></input>
+              <button class="result-clear" id="result-clear">&#10006;</button>  
+            </label>
+            <span class="result-count" id="search-result">0/0</span>
+            <button class="result-prev result-button" id="result-prev">&#8249;</button>
+            <button class="result-next result-button" id="result-next">&#8250;</button> 
+          </div>
+        </div>
+      </div> 
+      <ul class="req-list" id="req-list"></ul>
+    </div>
+  </body>
+</html>
