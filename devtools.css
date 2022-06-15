@@ -51,15 +51,16 @@ body {
   padding: 2px;
   align-items: center;
   justify-content: center;
+  opacity: 0.7;
 }
 
 .clear-icon {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
 }
 
 .clear-list-button:hover {
-  filter: brightness(50%);
+  opacity: 1;
 }
 
 .search-container {
@@ -70,17 +71,13 @@ body {
 
 .result-prev,
 .result-next {
-  width: 20px;
-  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  border-radius: 50%;
   border: none;
-  font-size: 20px;
-  background-color: #e5edf1;
-  border: 1px solid lightgray;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 .result-prev {
@@ -88,20 +85,39 @@ body {
 }
 
 .result-button:hover {
-  filter: brightness(90%);
+  opacity: 1;
+}
+
+.arrow-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.arrow-icon_rotated {
+  transform: rotate(180deg);
 }
 
 .result-clear {
   border: none;
   cursor: pointer;
-  width: 20px;
-  height: 20px;
   border-radius: 50%;
   position: absolute;
-  right: 5px;
+  right: 2px;
   transform: translateY(-50%);
   top: 50%;
   background-color: transparent;
+  display: flex;
+  padding: 3px;
+}
+
+.result-clear:hover .cross-icon {
+  opacity: 1;
+}
+
+.cross-icon {
+  width: 15px;
+  height: 15px;
+  opacity: 0.7;
 }
 
 .result-count {
@@ -317,7 +333,7 @@ body {
 
 /* OBJECT STYLES END  */
 
-@media (max-width: 665px) {
+@media (max-width: 655px) {
   .panel {
     align-items: flex-start;
     flex-wrap: wrap;
