@@ -17,37 +17,37 @@
   </head>
   <body>
     <div class="content">
-      <div class="panel">
+      <div class="panel" id="panel">
         <div class="left-column">
           <button class="clear-list-button" id="clear-list-button">
-            <img class="clear-icon" src="./icons/circle-crossed.png"></img>
+            <svg class="crossed-circle-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1280"><path d="M605.5 13.6c-2.2.2-10.7.8-19 1.4-97.2 7.1-196.3 40.4-281 94.3C154.4 205.4 52.3 360.5 23.1 538c-6.7 40.5-8.5 68.1-7.8 114.5 1 63 8.9 114 26.6 172.7 43.2 143 138.7 268.6 264.6 348 143.3 90.4 316.7 118.1 481 76.9 180.2-45.3 333.9-172.7 411.9-341.7 76-164.4 78.9-351.6 8-517.1-60.2-140.7-171.8-256.3-309.2-320.2C827 37.9 753.2 19.2 673.5 14c-14.3-.9-57.7-1.1-68-.4zM688 169.5c43.1 5.3 83 15.2 120.8 30.1 15.5 6.1 52.9 24.5 66.7 32.9 49.6 30 91 66.2 126.1 110.1 81 101.4 117 229.1 100.8 358.4-4.9 39-15.5 80.2-30.5 118-6.5 16.5-22.2 48.5-31.4 64-15.8 26.7-45 66.4-48.3 65.8-2.1-.4-596.1-711.8-596.2-713.9 0-1.9 20.5-13.5 41-23.2 52.6-25 105.2-38.8 168-44.1 12.1-1 70.2.3 83 1.9zM580.5 690c164.5 197.1 296.4 356.1 296.3 356.9-.4 2.2-11.4 8.6-33.3 19.5-83 41.2-175.7 56.6-268 44.5-133.9-17.6-253.5-92.6-329.2-206.4-42.4-63.6-67.6-133.9-77-214-2.4-21.3-2.4-76.7 0-98.4 9-79.1 34.2-149.9 76.1-213.6 9.3-14.1 22.2-31.6 30.4-41.3 4-4.6 4.7-5.1 6.3-4 .9.7 135.2 161.3 298.4 356.8z"/></svg>
           </button>  
-          <label class="filter-label">
-            <input class="filter-input" id="filter-input" type="text" placeholder="filter"></input>
+          <label class="input-label">
+            <input class="input" id="filter-input" type="text" placeholder="filter"></input>
           </label>
-          <label class="preserve-label">
+          <label class="checkbox-label">
             <input type="checkbox" id="preserve-checkbox"></input>
-            <p class="show-text">PRESERVE LOG</p>
+            <p class="checkbox-text">Preserve log</p>
           </label>
         </div>
         <div class="right-column">
-          <label class="show-objects-label">
+          <label class="checkbox-label checkbox-label-expand">
             <input type="checkbox" id="expand-checkbox"></input>
-            <p class="show-text">EXPAND</p> 
+            <p class="checkbox-text">Expand</p> 
           </label>
           <div class="search-container">
-            <label class="search-label">
-              <input class="search-input" id="search" type="text" placeholder="search"></input>
+            <label class="input-label">
+              <input class="input search-input" id="search" type="text" placeholder="search"></input>
               <button class="result-clear" id="result-clear">
-                <img class="cross-icon" src="./icons/cross.png"></img>
+                <svg class="cross-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" xml:space="preserve"><path d="M500 10C229.4 10 10 229.4 10 500s219.4 490 490 490 490-219.4 490-490S770.6 10 500 10zm230.6 673.1c12.1 11.9 12.3 31.2.5 43.4-11.9 12.1-31.2 12.3-43.4.5L500 542.9 312.2 726.8c-12.1 11.9-31.5 11.7-43.4-.5-11.9-12.1-11.7-31.5.5-43.4l186.9-183-186.8-183c-12.1-11.9-12.3-31.2-.5-43.4 11.9-12.1 31.2-12.3 43.4-.5l187.8 184 187.8-183.9c12.1-11.9 31.5-11.7 43.4.5 11.9 12.1 11.7 31.5-.5 43.4L543.7 500l186.9 183.1z"/></svg>
               </button>  
             </label>
             <span class="result-count" id="search-result">0/0</span>
             <button class="result-prev result-button" id="result-prev">
-              <img class="arrow-icon arrow-icon_rotated" src="./icons/arrow-circled.png"></img>
+              <svg class="arrow-icon arrow-icon_rotated" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" xml:space="preserve"><path d="M759.2 548.5 337.8 969.9c-26.8 26.8-70.3 26.8-97.1 0-26.8-26.8-26.8-70.3 0-97.1L613.6 500 240.8 127.2c-26.8-26.8-26.8-70.3 0-97.1 26.8-26.8 70.2-26.8 97.1 0l421.4 421.4c13.4 13.4 20.1 31 20.1 48.5-.1 17.6-6.8 35.1-20.2 48.5z"/></svg>
             </button>
             <button class="result-next result-button" id="result-next">
-              <img class="arrow-icon " src="./icons/arrow-circled.png"></img>
+              <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" xml:space="preserve"><path d="M759.2 548.5 337.8 969.9c-26.8 26.8-70.3 26.8-97.1 0-26.8-26.8-26.8-70.3 0-97.1L613.6 500 240.8 127.2c-26.8-26.8-26.8-70.3 0-97.1 26.8-26.8 70.2-26.8 97.1 0l421.4 421.4c13.4 13.4 20.1 31 20.1 48.5-.1 17.6-6.8 35.1-20.2 48.5z"/></svg>
             </button> 
           </div>
         </div>

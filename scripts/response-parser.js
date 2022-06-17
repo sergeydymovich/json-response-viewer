@@ -17,3 +17,13 @@ function parseResponse(res) {
 
   return parsedValue;
 }
+
+function parsePayload(payload) {
+  let parsedPayload = {};
+
+  payload.forEach(({ name, value }) => {
+    parsedPayload[name] = value;
+  });
+
+  return parsedPayload;
+}

@@ -17,7 +17,11 @@ body {
 .content {
   flex: 1 1;
   background-color: #fdfdfe;
+  width: 100vw;
+  max-width: 100%;
 }
+
+/* PANEL STYLES  */
 
 .panel {
   position: fixed;
@@ -28,8 +32,31 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 7px;
-  background-color: ghostwhite;
+  padding-left: 0;
+  background-color: #f1f3f4;
   z-index: 1;
+  border-bottom: 1px solid #cacdd1;
+}
+
+.clear-list-button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 3px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid lightgray;
+}
+
+.clear-list-button:hover .crossed-circle-icon {
+  fill: black;
+}
+
+.crossed-circle-icon {
+  width: 15px;
+  height: 15px;
+  fill: #6e6e6e;
 }
 
 .left-column,
@@ -40,27 +67,6 @@ body {
 
 .left-column {
   margin-right: 15px;
-}
-
-.clear-list-button {
-  cursor: pointer;
-  background-color: transparent;
-  margin-right: 5px;
-  border: 1px solid rgb(133, 133, 133);
-  display: flex;
-  padding: 2px;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.7;
-}
-
-.clear-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.clear-list-button:hover {
-  opacity: 1;
 }
 
 .search-container {
@@ -77,24 +83,33 @@ body {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  opacity: 0.7;
 }
 
 .result-prev {
   margin-right: 3px;
 }
 
-.result-button:hover {
-  opacity: 1;
+.result-button:hover .arrow-icon {
+  fill: black;
+}
+
+.result-button {
+  padding: 5px;
+  border-radius: 50%;
 }
 
 .arrow-icon {
-  width: 22px;
-  height: 22px;
+  width: 12px;
+  height: 12px;
+  fill: #6e6e6e;
+  transform: rotate(90deg);
+  margin-top: 1px;
 }
 
 .arrow-icon_rotated {
-  transform: rotate(180deg);
+  transform: rotate(-90deg);
+  margin-top: 0;
+  margin-bottom: 1px;
 }
 
 .result-clear {
@@ -102,7 +117,7 @@ body {
   cursor: pointer;
   border-radius: 50%;
   position: absolute;
-  right: 2px;
+  right: 10px;
   transform: translateY(-50%);
   top: 50%;
   background-color: transparent;
@@ -111,13 +126,13 @@ body {
 }
 
 .result-clear:hover .cross-icon {
-  opacity: 1;
+  fill: black;
 }
 
 .cross-icon {
   width: 15px;
   height: 15px;
-  opacity: 0.7;
+  fill: #6e6e6e;
 }
 
 .result-count {
@@ -125,23 +140,24 @@ body {
   min-width: 40px;
 }
 
-.filter-label {
-  margin-right: 10px;
-}
-
-.filter-input {
-  padding: 5px;
-  width: 160px;
-}
-
-.search-label {
-  margin-right: 5px;
+.input-label {
+  padding: 0 10px;
   position: relative;
 }
 
-.search-input {
-  padding: 5px 25px 5px 5px;
+.input {
+  padding: 3px;
   width: 160px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.input:focus {
+  border-color: blue;
+}
+
+.search-input {
+  padding-right: 20px;
 }
 
 .show-objects-label {
@@ -151,16 +167,88 @@ body {
   margin-right: 10px;
 }
 
-.preserve-label {
+.checkbox-label {
   display: flex;
   align-items: center;
   cursor: pointer;
+  padding: 3px 10px;
+  border-left: 1px solid lightgray;
 }
 
-.show-text {
+.checkbox-label-expand {
+  border-left: none;
+  border-right: 1px solid lightgray;
+}
+
+.checkbox-label:hover .checkbox-text {
+  color: black;
+}
+
+.checkbox-text {
   margin-left: 5px;
   line-height: 15px;
+  color: #6e6e6e;
+  white-space: nowrap;
 }
+
+/* DARK THEME  */
+.panel-dark {
+  background-color: #292a2d;
+}
+
+.panel-dark .crossed-circle-icon,
+.cross-icon,
+.arrow-icon {
+  fill: #9aa0a6;
+}
+
+.panel-dark .result-button:hover .arrow-icon {
+  fill: white;
+}
+
+.panel-dark .clear-list-button:hover .crossed-circle-icon {
+  fill: white;
+}
+
+.panel-dark .checkbox-text {
+  color: #9aa0a6;
+}
+
+.panel-dark .checkbox-label:hover .checkbox-text {
+  color: white;
+}
+
+.panel-dark .clear-list-button,
+.checkbox-label,
+.checkbox-label-expand {
+  border-color: #494c50;
+}
+
+.panel-dark .input {
+  background-color: #202124;
+  border-color: #494c50;
+  caret-color: white;
+  color: white;
+}
+
+.panel-dark .input:focus {
+  border-color: #0e639c;
+}
+
+.panel-dark .input::placeholder {
+  color: #9aa0a6;
+}
+
+.panel-dark .result-clear:hover .cross-icon {
+  fill: white;
+}
+
+.panel-dark .result-button:hover {
+  background-color: #494c50;
+}
+/* DARK THEME END  */
+
+/* PANEL STYLES END  */
 
 .req-content {
   font-size: 15px;
@@ -171,12 +259,13 @@ body {
   /* transition: min-height 100ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; */
   opacity: 0;
   background-color: white;
+  overflow: auto;
 }
 
 .req-list {
   list-style: none;
   padding: 0;
-  margin-top: 55px;
+  margin-top: 45px;
 }
 
 .req-item {
@@ -185,6 +274,16 @@ body {
   flex-direction: column;
   overflow: hidden;
   display: none;
+}
+
+.req-payload {
+  margin-bottom: 15px;
+}
+
+.req-subtitle {
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: #6e6e6e;
 }
 
 .req-item_show {
@@ -204,16 +303,18 @@ body {
 }
 
 .req-btn {
+  display: inline-block;
   cursor: pointer;
-  border: none;
   width: 100%;
+  max-width: 100%;
   text-align: left;
-  padding: 10px 25px;
-  border: none;
+  padding: 8px 25px;
   position: relative;
   background-color: #e5edf1;
   filter: brightness(100%);
   transition: filter 0.1s;
+  font-size: 13px;
+  word-wrap: break-word;
 }
 
 .req-btn::after {
@@ -324,7 +425,11 @@ body {
 }
 
 .object-value_boolean {
-  color: darkorchid;
+  color: indianred;
+}
+
+.object-value_object {
+  color: blueviolet;
 }
 
 .mark_focused {
@@ -333,7 +438,7 @@ body {
 
 /* OBJECT STYLES END  */
 
-@media (max-width: 655px) {
+@media (max-width: 705px) {
   .panel {
     align-items: flex-start;
     flex-wrap: wrap;
@@ -347,11 +452,17 @@ body {
     flex-direction: row-reverse;
   }
 
-  .search-container {
-    margin-right: 10px;
+  .req-list {
+    margin-top: 80px;
   }
 
-  .req-list {
-    margin-top: 95px;
+  .checkbox-label-expand {
+    margin-left: 10px;
+    border-right: none;
+    border-left: 1px solid lightgray;
+  }
+
+  .panel-dark .checkbox-label-expand {
+    border-color: #494c50;
   }
 }
