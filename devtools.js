@@ -4,13 +4,18 @@ chrome.devtools.panels.create(
   "devtools.html"
 );
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function (e) {
   chrome.devtools.network.onRequestFinished.addListener(function (request) {
     const resourceType = request._resourceType;
     if (resourceType === "xhr" || resourceType === "fetch") {
       createReqElement(request);
     }
   });
+
+  if (chrome.devtools.panels.themeName === "dark") {
+    const panel = document.getElementById("panel");
+    panel.classList.add("panel-dark");
+  }
 
   const clearListBtn = document.getElementById("clear-list-button");
   clearListBtn.addEventListener("click", () => clearReqList());

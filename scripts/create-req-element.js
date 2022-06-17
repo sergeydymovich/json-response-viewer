@@ -7,9 +7,12 @@ function createReqElement(request) {
   });
 
   const button = createElement({
-    tagName: "button",
+    tagName: "div",
     className: "req-btn",
-    innerText: getReqPath(request.request.headers) || request.request.url,
+    innerText:
+      request.request.method +
+      " " +
+      (getReqPath(request.request.headers) || request.request.url),
   });
 
   button.addEventListener("click", () => {
@@ -22,14 +25,37 @@ function createReqElement(request) {
     className: `req-content`,
   });
 
+  const reqPayload = request.request.queryString;
+
+  if (reqPayload.length) {
+    const parsedPayload = parsePayload(reqPayload);
+    const payloadContainer = createElement({
+      tagName: "div",
+      className: `req-payload`,
+      innerHtml: `<h3 class='req-subtitle'>request payload</h3>`,
+    });
+
+    showObject(parsedPayload, payloadContainer);
+
+    reqResp.append(payloadContainer);
+  }
+
   const resStatus = request.response.status;
   const isSuccessStatus = resStatus > 199 && resStatus < 300;
 
   request.getContent((content) => {
     const parsedResponse = parseResponse(content);
 
+    const reqRespSubtitle = createElement({
+      tagName: "h3",
+      className: `req-subtitle`,
+      innerText: "response",
+    });
+
+    reqResp.append(reqRespSubtitle);
+
     if (!parsedResponse || typeof parsedResponse === "string") {
-      reqResp.innerText = parsedResponse || "no content";
+      reqResp.append(parsedResponse || "no content");
     } else {
       showObject(parsedResponse, reqResp);
     }
