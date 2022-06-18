@@ -2,7 +2,7 @@ function toggleExpandRequests(isChecked) {
   const isExpandCheckboxChecked =
     document.getElementById("expand-checkbox").checked;
 
-  const openedReqElements = document.getElementsByClassName("req-content_open");
+  const openedReqElements = document.getElementsByClassName("req-item_open");
 
   const objElements = [];
   [...openedReqElements].forEach((el) =>
@@ -19,7 +19,7 @@ function toggleExpandRequests(isChecked) {
 }
 
 function toggleExpandRequest(reqItem) {
-  const isReqOpen = reqItem.classList.contains("req-content_open");
+  const isReqOpen = reqItem.classList.contains("req-item_open");
   const searchInputValue = document.getElementById("search").value;
   const isExpandCheckboxChecked =
     document.getElementById("expand-checkbox").checked;
@@ -33,7 +33,9 @@ function toggleExpandRequest(reqItem) {
       "object-search-value"
     );
 
-    [...searchElements].forEach((el) => clearSearchResults(el));
+    [...searchElements].forEach(
+      (el) => (el.innerText = removeTagsFromElement(el))
+    );
   }
 
   replaceInnerText(searchInputValue);
