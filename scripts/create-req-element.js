@@ -16,8 +16,8 @@ function createReqElement(request) {
   });
 
   button.addEventListener("click", () => {
-    reqResp.classList.toggle("req-content_open");
-    toggleExpandRequest(reqResp);
+    reqContainer.classList.toggle("req-item_open");
+    toggleExpandRequest(reqContainer);
   });
 
   const reqResp = createElement({

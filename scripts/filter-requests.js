@@ -5,22 +5,18 @@ function filterRequests(str) {
   filterRequestsStr = filterStr;
 
   const reqElements = document.getElementsByClassName("req-item");
-
   [...reqElements].forEach((el) => {
     const isElContainStr = isReqElementShow(el);
 
     if (isElContainStr) {
       el.classList.add("req-item_show");
     } else {
-      el.classList.remove("req-item_show");
+      el.classList.remove("req-item_show", "req-item_open");
 
-      const contentElement = el.getElementsByClassName("req-content")[0];
-      contentElement.classList.remove("req-content_open");
-
-      const searchElements = contentElement.getElementsByClassName(
-        "object-search-value"
+      const searchElements = el.getElementsByClassName("object-search-value");
+      [...searchElements].forEach(
+        (el) => (el.innerText = removeTagsFromElement(el))
       );
-      [...searchElements].forEach((el) => clearSearchResults(el));
 
       const searchInputValue = document.getElementById("search").value;
       replaceInnerText(searchInputValue);

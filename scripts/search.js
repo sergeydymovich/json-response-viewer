@@ -55,13 +55,13 @@ function replaceInnerText(str = "") {
   const searchStr = str.trim().toLowerCase();
   const searchElementsArr = [];
 
-  const reqShowedElements = document.getElementsByClassName("req-item_show");
+  const reqShowedOpenedElements = document.getElementsByClassName(
+    "req-item_show req-item_open"
+  );
 
-  [...reqShowedElements].forEach((reqEl) =>
-    [...reqEl.getElementsByClassName("req-content_open")].forEach((contentEl) =>
-      searchElementsArr.push(
-        ...contentEl.getElementsByClassName("object-search-value")
-      )
+  [...reqShowedOpenedElements].forEach((reqEl) =>
+    searchElementsArr.push(
+      ...reqEl.getElementsByClassName("object-search-value")
     )
   );
 
@@ -70,7 +70,7 @@ function replaceInnerText(str = "") {
   }
 
   searchElementsArr.forEach((el) => {
-    const clearedElValue = `${el.textContent}`.replace(/<[^>]*>/g, "");
+    const clearedElValue = removeTagsFromElement(el);
 
     el.innerHTML = searchStr
       ? insertTagIntoString(clearedElValue, searchStr)
@@ -103,6 +103,5 @@ function insertTagIntoString(str, subStr) {
   return resultStr + str.substring(elIds[elIds.length - 1] + subStr.length);
 }
 
-function clearSearchResults(el) {
-  el.innerHTML = `${el.textContent}`.replace(/<[^>]*>/g, "");
-}
+const removeTagsFromElement = (el) =>
+  `${el.textContent}`.replace(/<[^>]*>/g, "");
