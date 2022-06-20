@@ -45,21 +45,19 @@ function createReqElement(request) {
 
   request.getContent((content) => {
     const parsedResponse = parseResponse(content);
-
-    const reqRespSubtitle = createElement({
-      tagName: "h3",
-      className: `req-subtitle`,
-      innerText: "response",
+    const responseContainer = createElement({
+      tagName: "div",
+      className: `req-response`,
+      innerHtml: "<h3 class='req-subtitle'>response</h3>",
     });
 
-    reqResp.append(reqRespSubtitle);
-
     if (!parsedResponse || typeof parsedResponse === "string") {
-      reqResp.append(parsedResponse || "no content");
+      responseContainer.append(parsedResponse || "no content");
     } else {
-      showObject(parsedResponse, reqResp);
+      showObject(parsedResponse, responseContainer);
     }
 
+    reqResp.append(responseContainer);
     reqContainer.classList.add(
       isSuccessStatus ? "req-item_success" : "req-item_error"
     );

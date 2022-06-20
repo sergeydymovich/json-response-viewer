@@ -283,7 +283,6 @@ body {
 }
 
 .req-item {
-  margin-bottom: 2px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -373,6 +372,7 @@ body {
 .object-container {
   position: relative;
   border-left: 1px dotted lightgray;
+  padding-right: 20px;
 }
 
 .object-property {
@@ -452,11 +452,11 @@ body {
 }
 
 .object-value_boolean {
-  color: indianred;
+  color: #ab0dad;
 }
 
 .object-value_object {
-  color: blueviolet;
+  color: indianred;
 }
 
 .mark_focused {
