@@ -1,4 +1,4 @@
-function parseResponse(res) {
+function parseJSON(res) {
   let parsedValue = res;
   try {
     const parsedJSON = JSON.parse(res);
@@ -11,19 +11,9 @@ function parseResponse(res) {
     !isEmptyObj(parsedValue)
   ) {
     Object.entries(parsedValue).forEach(([key, value]) => {
-      parsedValue[key] = parseResponse(value);
+      parsedValue[key] = parseJSON(value);
     });
   }
 
   return parsedValue;
-}
-
-function parsePayload(payload) {
-  let parsedPayload = {};
-
-  payload.forEach(({ name, value }) => {
-    parsedPayload[name] = value;
-  });
-
-  return parsedPayload;
 }
