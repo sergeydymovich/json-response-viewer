@@ -33,9 +33,7 @@ function toggleExpandRequest(reqItem) {
       "object-search-value"
     );
 
-    [...searchElements].forEach(
-      (el) => (el.innerText = removeTagsFromElement(el))
-    );
+    [...searchElements].forEach((el) => (el.innerHTML = `${el.textContent}`));
   }
 
   replaceInnerText(searchInputValue);
