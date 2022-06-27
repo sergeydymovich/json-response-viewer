@@ -1,7 +1,7 @@
 {
   "name": "JSON Response Viewer",
   "description": "Simple JSON responses viewer",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "manifest_version": 3,
   "devtools_page": "devtools.html",
   "icons": {

@@ -25,10 +25,10 @@ function createReqElement(request) {
     className: `req-content`,
   });
 
-  const reqPayload = request.request.queryString;
+  const reqPayload = request.request.postData?.text;
 
-  if (reqPayload.length) {
-    const parsedPayload = parsePayload(reqPayload);
+  if (reqPayload) {
+    const parsedPayload = parseJSON(reqPayload);
     const payloadContainer = createElement({
       tagName: "div",
       className: `req-payload`,
@@ -44,7 +44,7 @@ function createReqElement(request) {
   const isSuccessStatus = resStatus > 199 && resStatus < 300;
 
   request.getContent((content) => {
-    const parsedResponse = parseResponse(content);
+    const parsedResponse = parseJSON(content);
     const responseContainer = createElement({
       tagName: "div",
       className: `req-response`,

@@ -52,7 +52,6 @@ function changeSearchResult(searchStr) {
 }
 
 function replaceInnerText(str = "") {
-  console.time("search");
   const searchStr = str.trim().toLowerCase();
   const searchElementsArr = [];
 
@@ -79,7 +78,6 @@ function replaceInnerText(str = "") {
   });
 
   changeSearchResult(searchStr);
-  console.timeEnd("search");
 }
 
 function insertTagIntoString(str, subStr) {
