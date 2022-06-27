@@ -14,9 +14,7 @@ function filterRequests(str) {
       el.classList.remove("req-item_show", "req-item_open");
 
       const searchElements = el.getElementsByClassName("object-search-value");
-      [...searchElements].forEach(
-        (el) => (el.innerText = removeTagsFromElement(el))
-      );
+      [...searchElements].forEach((el) => (el.innerHTML = `${el.textContent}`));
 
       const searchInputValue = document.getElementById("search").value;
       replaceInnerText(searchInputValue);

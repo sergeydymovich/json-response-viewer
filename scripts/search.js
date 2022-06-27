@@ -52,6 +52,7 @@ function changeSearchResult(searchStr) {
 }
 
 function replaceInnerText(str = "") {
+  console.time("search");
   const searchStr = str.trim().toLowerCase();
   const searchElementsArr = [];
 
@@ -70,7 +71,7 @@ function replaceInnerText(str = "") {
   }
 
   searchElementsArr.forEach((el) => {
-    const clearedElValue = removeTagsFromElement(el);
+    const clearedElValue = `${el.textContent}`;
 
     el.innerHTML = searchStr
       ? insertTagIntoString(clearedElValue, searchStr)
@@ -78,6 +79,7 @@ function replaceInnerText(str = "") {
   });
 
   changeSearchResult(searchStr);
+  console.timeEnd("search");
 }
 
 function insertTagIntoString(str, subStr) {
@@ -102,6 +104,3 @@ function insertTagIntoString(str, subStr) {
 
   return resultStr + str.substring(elIds[elIds.length - 1] + subStr.length);
 }
-
-const removeTagsFromElement = (el) =>
-  `${el.textContent}`.replace(/<[^>]*>/g, "");
